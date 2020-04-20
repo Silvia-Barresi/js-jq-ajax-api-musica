@@ -34,10 +34,27 @@ $(document).ready(function(){
     },
 
     error: function(richiesta,stato,errore){
-      alert("Chiamata fallita!!!");
-    }
 
+    }
 
   });
 
+  $(".genre select").on("input", function() {
+
+      var filter = $(this).val().toLowerCase();
+
+      $(".box").each(function() {
+
+          var genere = $(this).data("genre").toLowerCase();
+
+          if (filter === "" || genere === filter) {
+
+              $(this).show();
+
+          } else {
+
+              $(this).hide();
+          }
+      });
+    });
 });
